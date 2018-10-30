@@ -16,9 +16,13 @@ function ajax() {
 }
 
 function* getInitList() {
-    const res = yield ajax();
-    const action = initListAction(res);
-    yield put(action);
+    try {
+        const res = yield ajax();
+        const action = initListAction(res);
+        yield put(action);
+    }catch (e) {
+        console.log(e);
+    }
 }
 
 function* mySaga() {
